@@ -1,0 +1,26 @@
+{
+  "name": "chenli-bower-gulp",
+  "authors": [
+    "chenli <chenli_1989@foxmail.com>"
+  ],
+  "description": "chenli-bower-gulp demo",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "chenli",
+    "bower",
+    "gulp"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ngview",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.9"
+  }
+}
