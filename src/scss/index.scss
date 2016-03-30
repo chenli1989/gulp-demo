@@ -2,5 +2,12 @@ body{
   div{
     font-family: "American Typewriter";
     font-size: 14px;
+    border-radius: 3px;
+    opacity: 0.5;
+    box-shadow: 10px 10px 5px #888888;
+    transform: rotate(45deg);
+    display: flex;
+    color: #fff;
+    height: 50px;
   }
 }

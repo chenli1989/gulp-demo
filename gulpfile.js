@@ -1,19 +1,20 @@
 /**
  * Created by chenli on 16/3/20.
  */
-var gulp    = require('gulp'),                 //基础库
-    imagemin = require('gulp-imagemin'),       //图片压缩
-    sass = require('gulp-ruby-sass'),          //sass
-    minifycss = require('gulp-minify-css'),    //css压缩
-    jshint = require('gulp-jshint'),           //js检查
-    uglify  = require('gulp-uglify'),          //js压缩
-    rename = require('gulp-rename'),           //重命名
-    concat  = require('gulp-concat'),          //合并文件
-    clean = require('gulp-clean'),             //清空文件夹
-    tinylr = require('tiny-lr'),               //livereload
+var gulp    = require('gulp'),                          //基础库
+    imagemin = require('gulp-imagemin'),                //图片压缩
+    sass = require('gulp-sass'),                        //sass
+    autoprefixer = require('gulp-autoprefixer'),        //Autoprefixer
+    minifycss = require('gulp-minify-css'),             //css压缩
+    jshint = require('gulp-jshint'),                    //js检查
+    uglify  = require('gulp-uglify'),                   //js压缩
+    rename = require('gulp-rename'),                    //重命名
+    concat  = require('gulp-concat'),                   //合并文件
+    clean = require('gulp-clean'),                      //清空文件夹
+    tinylr = require('tiny-lr'),                        //tiny-lr
     server = tinylr(),
     port = 35729,
-    livereload = require('gulp-livereload');   //livereload
+    livereload = require('gulp-livereload');            //livereload
 
 // HTML处理
 gulp.task('html', function() {
@@ -32,6 +33,10 @@ gulp.task('css', function () {
 
     gulp.src(cssSrc)
         .pipe(sass({ style: 'expanded'}))
+        .pipe(autoprefixer({
+            browsers: ['IE 7'],
+            cascade: true
+        }))
         .pipe(gulp.dest(cssDst))
         .pipe(rename({ suffix: '.min' }))
         .pipe(minifycss())
@@ -47,7 +52,7 @@ gulp.task('images', function(){
         .pipe(imagemin())
         .pipe(livereload(server))
         .pipe(gulp.dest(imgDst));
-})
+});
 
 // js处理
 gulp.task('js', function () {
@@ -88,7 +93,7 @@ gulp.task('watch',function(){
         // 监听html
         gulp.watch('./src/*.html', function(event){
             gulp.run('html');
-        })
+        });
 
         // 监听css
         gulp.watch('./src/scss/*.scss', function(){
